@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Verificar Pendências{% endblock %}
+
+{% block content %}
+  <h2>Verificar Pendências</h2>
+  <form method="POST" style="max-width: 400px;">
+    <div class="mb-3">
+      <input name="nome" class="form-control" placeholder="Nome do inquilino" required>
+    </div>
+    <div class="mb-3">
+      <input name="ano" type="number" min="2000" max="2100" class="form-control" placeholder="Ano (ex: 2025)" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Verificar</button>
+  </form>
+
+  {% if pendencias %}
+    <h3 class="mt-4">Pendências:</h3>
+    <ul class="list-group mb-3" style="max-width: 600px;">
+      {% for linha in pendencias %}
+        <li class="list-group-item">{{ linha }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <a href="{{ url_for('menu') }}" class="btn btn-link">Voltar ao menu</a>
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório Anual{% endblock %}
+
+{% block content %}
+  <h2>Relatório Anual</h2>
+  <form method="POST" style="max-width: 400px;">
+    <div class="mb-3">
+      <input name="nome" class="form-control" placeholder="Nome do inquilino" required>
+    </div>
+    <div class="mb-3">
+      <input name="ano" type="number" min="2000" max="2100" class="form-control" placeholder="Ano" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Gerar</button>
+  </form>
+
+  {% if relatorio %}
+    <h3 class="mt-4">Relatório:</h3>
+    <ul class="list-group mb-3" style="max-width: 600px;">
+      {% for linha in relatorio %}
+        <li class="list-group-item">{{ linha }}</li>
+      {% endfor %}
+    </ul>
+    <p><strong>Total:</strong> Aluguel R$ {{ total_aluguel }}, Luz R$ {{ total_luz }}</p>
+  {% endif %}
+
+  <a href="{{ url_for('menu') }}" class="btn btn-link">Voltar ao menu</a>
+{% endblock %}

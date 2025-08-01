@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Novo Usuário{% endblock %}
+
+{% block content %}
+  <h2>Cadastrar Novo Usuário</h2>
+  <form method="POST">
+    <div class="mb-3">
+      <input name="nome" class="form-control" placeholder="Usuário" required>
+    </div>
+    <div class="mb-3">
+      <input name="senha" type="password" class="form-control" placeholder="Senha" required>
+    </div>
+    <div class="mb-3">
+      <input name="palavra" class="form-control" placeholder="Palavra secreta" required>
+    </div>
+    <div class="mb-3">
+      <select name="nivel" class="form-select" required>
+        <option value="" disabled selected>Selecione o nível</option>
+        <option value="admin">Admin</option>
+        <option value="leitor">Leitor</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </form>
+  <br>
+  <a href="{{ url_for('menu') }}" class="btn btn-link">Voltar ao menu</a>
+{% endblock %}
+

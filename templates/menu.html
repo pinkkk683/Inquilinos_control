@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Menu Principal{% endblock %}
+
+{% block content %}
+  <h2>Bem-vindo, {{ nome }}!</h2>
+
+  <ul class="list-group mt-4" style="max-width: 400px;">
+    {% if nivel == "admin" %}
+      <li class="list-group-item">
+        <a href="{{ url_for('cadastrar_inquilino') }}" class="text-decoration-none">Cadastrar Inquilino</a>
+      </li>
+      <li class="list-group-item">
+        <a href="{{ url_for('registrar_pagamento') }}" class="text-decoration-none">Registrar Pagamento</a>
+      </li>
+    {% endif %}
+    <li class="list-group-item">
+      <a href="{{ url_for('verificar_pendencias') }}" class="text-decoration-none">Verificar Pendências</a>
+    </li>
+    <li class="list-group-item">
+      <a href="{{ url_for('gerar_relatorio') }}" class="text-decoration-none">Gerar Relatório</a>
+    </li>
+    <li class="list-group-item">
+      <a href="{{ url_for('trocar_senha') }}" class="text-decoration-none">Trocar Senha</a>
+    </li>
+    {% if nivel == "admin" %}
+      <li class="list-group-item">
+        <a href="{{ url_for('cadastrar_usuario') }}" class="text-decoration-none">Cadastrar Novo Usuário</a>
+      </li>
+    {% endif %}
+    <li class="list-group-item">
+      <a href="{{ url_for('logout') }}" class="text-decoration-none text-danger">Sair</a>
+    </li>
+  </ul>
+{% endblock %}
+
